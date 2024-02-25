@@ -1,0 +1,13 @@
+{
+	"locale": "fr-FR",
+	"messages": {
+		"ricercheGoogleLike": {
+			"search": "Search in GeoRoma ...",
+			"map": "map",
+			"Maps": "Maps",
+			"layer": "layer",
+			"name": "name",
+			"description": "description"
+		}
+	}
+}

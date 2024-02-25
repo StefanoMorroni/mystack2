@@ -1,0 +1,13 @@
+{
+	"locale": "it-IT",
+	"messages": {
+		"ricercheGoogleLike": {
+			"search": "Cerca in GeoRoma ...",
+			"map": "mappa",
+			"Maps": "Mappe",
+			"layer": "layer",
+			"name": "nome",
+			"description": "descrizione"
+		}
+	}
+}

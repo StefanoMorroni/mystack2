@@ -1,0 +1,455 @@
+version: "3.4"
+
+networks:
+  lan-cdr-coll:
+    external: true
+
+volumes:
+  georoma-iamdb-data:
+    driver: local
+  geostore-data:
+    driver: local
+  georoma-geoserver-data:
+    driver: local
+  georoma-fileserver-data:
+    driver: local
+  mpic-geostore-data:
+    driver: local
+  postgis-data:
+    driver: local
+  geoserver-data:
+    driver: local
+  ispra-geoserver-data:
+    driver: local
+  ispra-geostore-data:
+    driver: local
+  traefik_certs: {}
+
+services:
+  traefik:
+    image: traefik:1.7
+    ports:
+      - target: 80
+        published: 80
+        mode: host
+      - target: 443
+        published: 443
+        mode: host
+    command: >
+      --api
+      --acme
+      --acme.storage=/certs/acme.json
+      --acme.entryPoint=https
+      --acme.httpChallenge.entryPoint=http
+      --acme.onHostRule=true
+      --acme.onDemand=false
+      --acme.acmelogging=true
+      --acme.email=smorroni@hotmail.com
+      --docker
+      --docker.swarmMode
+      --docker.domain=ddns.net
+      --docker.watch
+      --defaultentrypoints=http,https
+      --entrypoints='Name:http Address::80'
+      --entrypoints='Name:https Address::443 TLS'
+      --logLevel=INFO
+      --accessLog
+      --metrics
+      --metrics.prometheus
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - traefik_certs:/certs
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+      labels:
+        - "traefik.docker.network=lan-cdr-coll"
+        - "traefik.port=8080"
+        - "traefik.backend=traefik"
+        - "traefik.enable=true"
+        - "traefik.frontend.rule=Host:traefik-dashboard.ddns.net"
+        - "traefik.frontend.entryPoints=http,https"
+        #- "traefik.frontend.headers.SSLRedirect=true"
+
+  whoami:
+    image: traefik/whoami # A container that exposes an API to show its IP address
+    networks:
+      - lan-cdr-coll
+    deploy:
+      labels:
+        - "traefik.port=80"
+        - "traefik.enable=true"
+        - "traefik.backend=whoami"
+        - "traefik.docker.network=lan-cdr-coll"
+        - "traefik.frontend.entryPoints=http,https"
+        #- "traefik.frontend.headers.SSLRedirect=true"
+        - "traefik.frontend.rule=Host:georoma.ddns.net;Path:/whoami"
+
+  georoma-iamdb:
+    image: postgres:13
+    volumes:
+      - georoma-iamdb-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+    networks:
+     - lan-cdr-coll
+
+  georoma-iam:
+    image: jboss/keycloak:11.0.2
+    ports:
+      - "8888:8888"
+    environment:
+      DB_VENDOR: POSTGRES
+      DB_ADDR: georoma-iamdb
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_FRONTEND_URL: "https://georoma.ddns.net/auth/"
+      KEYCLOAK_LOGLEVEL: DEBUG
+      #ROOT_LOGLEVEL: INFO
+      DEBUG: "true"
+      DEBUG_PORT: "*:8888"
+    networks:
+     - lan-cdr-coll
+    deploy:
+      labels:
+        - "traefik.port=8080"
+        - "traefik.enable=true"
+        - "traefik.backend=georoma-iam"
+        - "traefik.docker.network=lan-cdr-coll"
+        - "traefik.frontend.entryPoints=http,https"
+        #- "traefik.frontend.headers.SSLRedirect=true"
+        - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/auth"
+
+  georoma-geoserver:
+    image: kartoza/geoserver:2.19.0
+    hostname: georoma-geoserver
+    environment:
+      - GEOSERVER_ADMIN_USER=admin
+      - GEOSERVER_ADMIN_PASSWORD=admin
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+      - STABLE_EXTENSIONS=geofence-server-plugin
+      - COMMUNITY_EXTENSIONS=sec-oauth2-openid-connect-plugin
+    volumes:
+      - georoma-geoserver-data:/opt/geoserver/data_dir
+      - ./georoma-geoserver/web.xml:/usr/local/tomcat/conf/web.xml
+      - ./georoma-geoserver/global.xml:/opt/geoserver/data_dir/global.xml
+    stdin_open: true
+    tty: true
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 0s
+        max_attempts: 3
+        window: 10s
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/geoserver"
+        
+  georoma-geostore:
+    image: postgres:13
+    volumes:
+      - geostore-data:/var/lib/postgresql/data
+      - ./georoma-geostore/001_setup_db.sql:/docker-entrypoint-initdb.d/001_setup_db.sql
+      - ./georoma-geostore/002_create_schema_postgres.sql:/docker-entrypoint-initdb.d/002_create_schema_postgres.sql
+      - ./georoma-geostore/003_create_schema_postgres.sql:/docker-entrypoint-initdb.d/003_create_schema_postgres.sql
+      - ./georoma-geostore/004_georoma.sql:/docker-entrypoint-initdb.d/004_georoma.sql
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: geostore
+      POSTGRES_USER: geostore
+      POSTGRES_PASSWORD: geostore
+    networks:
+     - lan-cdr-coll
+  
+  georoma-mapstore:
+    image: stefanomorroni/georoma-mapstore:2.0.0
+    volumes:
+      - ./georoma-mapstore/datadir:/usr/local/tomcat/datadir
+      - ./georoma-mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
+    ports:
+      - "8886:8886"
+    environment:
+      - POSTGRES_DB=geostore
+      - POSTGRES_USER=geostore
+      - POSTGRES_PASSWORD=geostore
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8886,suspend=n -Dgeostore-ovr=file:///usr/local/tomcat/datadir/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/datadir -DCLIENT_SECRET=Formaromae.1 -DPRINT_BASE_URL=https://georoma.ddns.net/georoma/pdf
+    networks:
+     - lan-cdr-coll
+    command: ["/usr/local/tomcat/bin/wait-for-it.sh", "georoma-geostore:5432", "--", "/usr/local/tomcat/bin/catalina.sh", "run"] 
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/georoma"
+
+  georoma-fileserver:
+    image: stefanomorroni/georoma-fileserver:0.0.1
+    volumes:
+     - georoma-fileserver-data:/upload-dir
+    networks:
+     - lan-cdr-coll
+    deploy:
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/fileserver"
+
+  georoma-nginx:
+    image: nginx:1.21.3
+    volumes:
+      - ./georoma-nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./georoma-nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - "traefik.port=80"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/sanpietrini,/mpic/geoserver,/oauth2"
+      restart_policy:
+        condition: on-failure
+        delay: 0s
+        max_attempts: 3
+        window: 10s
+
+  postgis:
+    image: kartoza/postgis:13.0
+    hostname: postgis
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgis-data:/var/lib/postgresql
+    environment:
+      POSTGRES_DBNAME: thedb
+      POSTGRES_USER: theuser
+      POSTGRES_PASS: thepassword
+    networks:
+      - lan-cdr-coll
+      
+  mpic-geoserver:
+    image: kartoza/geoserver:2.19.0
+    hostname: mpic-geoserver
+    environment:
+      - GEOSERVER_ADMIN_USER=admin
+      - GEOSERVER_ADMIN_PASSWORD=Geoserver100
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+      - STABLE_EXTENSIONS=geofence-server-plugin
+      - COMMUNITY_EXTENSIONS=sec-oauth2-openid-connect-plugin
+    volumes:
+      - geoserver-data:/opt/geoserver/data_dir
+      - ./mpic-geoserver/web.xml:/usr/local/tomcat/conf/web.xml
+    stdin_open: true
+    tty: true
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 0s
+        max_attempts: 3
+        window: 10s
+        
+  mpic-geostore:
+    image: postgres:13
+    volumes:
+      - mpic-geostore-data:/var/lib/postgresql/data
+      - ./georoma-geostore/001_setup_db.sql:/docker-entrypoint-initdb.d/001_setup_db.sql
+      - ./georoma-geostore/002_create_schema_postgres.sql:/docker-entrypoint-initdb.d/002_create_schema_postgres.sql
+      - ./georoma-geostore/003_create_schema_postgres.sql:/docker-entrypoint-initdb.d/003_create_schema_postgres.sql
+      - ./georoma-geostore/004_georoma.sql:/docker-entrypoint-initdb.d/004_georoma.sql
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: geostore
+      POSTGRES_USER: geostore
+      POSTGRES_PASSWORD: geostore
+    networks:
+     - lan-cdr-coll
+     
+  mpic-mapstore:
+    image: stefanomorroni/mpic-mapstore:0.0.128
+    volumes:
+      - ./mpic-mapstore/geostore-datasource-ovr.properties:/usr/local/tomcat/conf/geostore-datasource-ovr.properties
+      - ./mpic-mapstore/localConfig.json:/usr/local/tomcat/conf/localConfig.json
+      - ./mpic-mapstore/log4j.properties:/usr/local/tomcat/conf/log4j.properties
+      - ./mpic-mapstore/proxy.properties:/usr/local/tomcat/conf/proxy.properties
+      - ./mpic-mapstore/extensions.json:/usr/local/tomcat/conf/extensions.json
+      - ./mpic-mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
+    hostname: mpic
+    ports:
+      - "8887:8887"
+    environment:
+      - POSTGRES_DB=geostore
+      - POSTGRES_USER=geostore
+      - POSTGRES_PASSWORD=geostore
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8887,suspend=n -Dgeostore-ovr=file:///usr/local/tomcat/conf/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/conf -DPRINT_BASE_URL=https://georoma.ddns.net/mpic/pdf -DCLIENT_SECRET=Formaromae.1
+    networks:
+     - lan-cdr-coll
+    command: ["/usr/local/tomcat/bin/wait-for-it.sh", "mpic-geostore:5432", "--", "/usr/local/tomcat/bin/catalina.sh", "run"] 
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/mpic"
+
+  ispra-geoserver:
+    image: kartoza/geoserver:2.19.0
+    hostname: ispra-geoserver
+    environment:
+      - GEOSERVER_ADMIN_USER=admin
+      - GEOSERVER_ADMIN_PASSWORD=admin
+      - GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
+      #- STABLE_EXTENSIONS=geofence-server-plugin
+      #- COMMUNITY_EXTENSIONS=sec-oauth2-openid-connect-plugin
+    volumes:
+      - ispra-geoserver-data:/opt/geoserver/data_dir
+      - ./ispra-geoserver/web.xml:/usr/local/tomcat/conf/web.xml
+    stdin_open: true
+    tty: true
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 0s
+        max_attempts: 3
+        window: 10s
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:nnb.ddns.net;PathPrefix:/geoserver"
+      
+  ispra-geostore:
+    image: postgres:13
+    volumes:
+      - ispra-geostore-data:/var/lib/postgresql/data
+      - ./ispra-geostore/001_setup_db.sql:/docker-entrypoint-initdb.d/001_setup_db.sql
+      - ./ispra-geostore/002_create_schema_postgres.sql:/docker-entrypoint-initdb.d/002_create_schema_postgres.sql
+      - ./ispra-geostore/003_create_schema_postgres.sql:/docker-entrypoint-initdb.d/003_create_schema_postgres.sql
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: geostore
+      POSTGRES_USER: geostore
+      POSTGRES_PASSWORD: geostore
+    networks:
+     - lan-cdr-coll
+     
+  ispra-mapstore:
+    image: stefanomorroni/ispra-mapstore:0.0.6
+    volumes:
+      - ./ispra-mapstore/geostore-datasource-ovr.properties:/usr/local/tomcat/conf/geostore-datasource-ovr.properties
+      - ./ispra-mapstore/localConfig.json:/usr/local/tomcat/conf/localConfig.json
+      - ./ispra-mapstore/log4j.properties:/usr/local/tomcat/conf/log4j.properties
+      - ./ispra-mapstore/proxy.properties:/usr/local/tomcat/conf/proxy.properties
+      - ./ispra-mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
+    hostname: ispra-mapstore
+    ports:
+      - "8885:8885"
+    environment:
+      - POSTGRES_DB=geostore
+      - POSTGRES_USER=geostore
+      - POSTGRES_PASSWORD=geostore
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8885,suspend=n -Dgeostore-ovr=file:///usr/local/tomcat/conf/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/conf -DPRINT_BASE_URL=https://nnb.ddns.net/mapstore/pdf
+    networks:
+     - lan-cdr-coll
+    command: ["/usr/local/tomcat/bin/wait-for-it.sh", "ispra-geostore:5432", "--", "/usr/local/tomcat/bin/catalina.sh", "run"] 
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:nnb.ddns.net;PathPrefix:/mapstore"
+      
+  mapstore:
+    image: stefanomorroni/mapstore:0.0.1
+    volumes:
+      - ./mapstore/geostore-datasource-ovr.properties:/usr/local/tomcat/conf/geostore-datasource-ovr.properties
+      - ./mapstore/localConfig.json:/usr/local/tomcat/conf/localConfig.json
+      - ./mapstore/log4j.properties:/usr/local/tomcat/conf/log4j.properties
+      - ./mapstore/proxy.properties:/usr/local/tomcat/conf/proxy.properties
+      - ./mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
+    hostname: mapstore
+    environment:
+      - POSTGRES_DB=geostore
+      - POSTGRES_USER=geostore
+      - POSTGRES_PASSWORD=geostore
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Dgeostore-ovr=file:///usr/local/tomcat/conf/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/conf
+    networks:
+     - lan-cdr-coll
+    command: ["/usr/local/tomcat/bin/wait-for-it.sh", "georoma-geostore:5432", "--", "/usr/local/tomcat/bin/catalina.sh", "run"] 
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+      - "traefik.port=8080"
+      - "traefik.docker.network=lan-cdr-coll"
+      - "traefik.backend.loadbalancer.stickyness=true"
+      - "traefik.frontend.entryPoints=http,https"
+      #- "traefik.frontend.headers.SSLRedirect=true"
+      - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/mapstore"
+
+  geoportale:
+    image: stefanomorroni/geoportale:1.0.0
+    networks:
+      - lan-cdr-coll
+    deploy:
+      mode: replicated
+      replicas: 1
+      labels:
+        - "traefik.port=80"
+        - "traefik.docker.network=lan-cdr-coll"
+        - "traefik.backend.loadbalancer.stickyness=true"
+        - "traefik.frontend.entryPoints=http,https"
+        - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/"
+

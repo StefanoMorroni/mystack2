@@ -1,0 +1,15 @@
+<jdbcroleservice>
+  <id>-3f0b019a:17fc7cb69a5:-7fed</id>
+  <name>geostore</name>
+  <className>org.geoserver.security.jdbc.JDBCRoleService</className>
+  <propertyFileNameDDL>rolesddl.xml</propertyFileNameDDL>
+  <propertyFileNameDML>rolesdml.xml</propertyFileNameDML>
+  <jndi>false</jndi>
+  <driverClassName>org.postgresql.Driver</driverClassName>
+  <connectURL>jdbc:postgresql://georoma-geostore:5432/geostore</connectURL>
+  <userName>geostore</userName>
+  <password>crypt1:G8D8MANmnfgQrZ+2gZKP9S33sY+5HC1g</password>
+  <creatingTables>false</creatingTables>
+  <adminRoleName>ADMIN</adminRoleName>
+  <groupAdminRoleName>GROUP_ADMIN</groupAdminRoleName>
+</jdbcroleservice>
