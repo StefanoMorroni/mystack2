@@ -120,6 +120,11 @@
 	],
 	"initialState": {
 		"defaultState": {
+			"theme": {
+				"selectedTheme": {
+					"id": "romacapitale"
+				}
+			},
 			"mousePosition": {
 				"enabled": true,
 				"crs": "EPSG:6708"
