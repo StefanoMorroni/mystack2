@@ -23,6 +23,8 @@ volumes:
     driver: local
   ispra-geostore-data:
     driver: local
+  edwh-data:
+    driver: local
   traefik_certs: {}
 
 services:
@@ -453,3 +455,14 @@ services:
         - "traefik.frontend.entryPoints=http,https"
         - "traefik.frontend.rule=Host:georoma.ddns.net;PathPrefix:/"
 
+  edwhdb:
+    image: container-registry.oracle.com/database/free:latest
+    volumes:
+      - "edwh-data:/opt/oracle/oradata"
+    ports:
+      - "1521:1521"
+      - "5500:5500"
+    environment:
+      ORACLE_PWD: edwh
+    networks:
+     - lan-cdr-coll
