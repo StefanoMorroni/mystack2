@@ -186,7 +186,7 @@ services:
      - lan-cdr-coll
   
   georoma-mapstore:
-    image: stefanomorroni/georoma-mapstore:2.0.0
+    image: stefanomorroni/georoma-mapstore:v2023.02.02.001
     volumes:
       - ./georoma-mapstore/datadir:/usr/local/tomcat/datadir
       - ./georoma-mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
