@@ -1,1 +1,10 @@
-{"RicercheGoogleLike":{"bundle":"RicercheGoogleLike/index.js","translations":"RicercheGoogleLike/translations"}}
+{
+	"RicercheGoogleLike": {
+		"bundle": "RicercheGoogleLike/index.js",
+		"translations": "RicercheGoogleLike/translations"
+	},
+	"CatastoOpen": {
+		"bundle": "CatastoOpen/index.js",
+		"translations": "CatastoOpen/translations"
+	}
+}
