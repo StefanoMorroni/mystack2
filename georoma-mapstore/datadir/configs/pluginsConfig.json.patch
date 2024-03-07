@@ -1,1 +1,1 @@
-[{"op":"add","path":"/plugins/-","value":{"name":"RicercheGoogleLike","extension":true}}]
+[{"op":"add","path":"/plugins/-","value":{"name":"RicercheGoogleLike","extension":true}},{"op":"add","path":"/plugins/-","value":{"name":"CatastoOpen","dependencies":["SidebarMenu"],"extension":true}}]
