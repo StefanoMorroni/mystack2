@@ -1484,7 +1484,7 @@
 		"tipoutente": "iv_tipoutente"
 	},
 	"georoma": {
-		"fogliurl": "https://geoportale-preprod.comune.roma.it/api/v1/ricerche/toponomastica/fogli/",
+		"fogliurl": "https://geoportale-preprod.comune.roma.it/api/v2/ricerche/catasto/fogli/",
 		"indirizziurl": "https://geoportale-preprod.comune.roma.it/api/v2/ricerche/toponomastica/indirizzi",
 		"loaderMeWorkspaces": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/me/workspaces",
 		"loaderAdminWorkspaces": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/admin/workspaces",
