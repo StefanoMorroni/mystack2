@@ -305,13 +305,9 @@ services:
      - lan-cdr-coll
      
   mpic-mapstore:
-    image: stefanomorroni/mpic-mapstore:0.0.128
+    image: stefanomorroni/mpic-mapstore:v2023.02.02.001
     volumes:
-      - ./mpic-mapstore/geostore-datasource-ovr.properties:/usr/local/tomcat/conf/geostore-datasource-ovr.properties
-      - ./mpic-mapstore/localConfig.json:/usr/local/tomcat/conf/localConfig.json
-      - ./mpic-mapstore/log4j.properties:/usr/local/tomcat/conf/log4j.properties
-      - ./mpic-mapstore/proxy.properties:/usr/local/tomcat/conf/proxy.properties
-      - ./mpic-mapstore/extensions.json:/usr/local/tomcat/conf/extensions.json
+      - ./mpic-mapstore/datadir:/usr/local/tomcat/datadir
       - ./mpic-mapstore/wait-for-it.sh:/usr/local/tomcat/bin/wait-for-it.sh
     hostname: mpic
     ports:
@@ -320,7 +316,7 @@ services:
       - POSTGRES_DB=geostore
       - POSTGRES_USER=geostore
       - POSTGRES_PASSWORD=geostore
-      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8887,suspend=n -Dgeostore-ovr=file:///usr/local/tomcat/conf/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/conf -DPRINT_BASE_URL=https://georoma.ddns.net/mpic/pdf -DCLIENT_SECRET=Formaromae.1
+      - JAVA_OPTS=-Xms512m -Xmx512m -XX:MaxPermSize=128m -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=8886,suspend=n -Dgeostore-ovr=file:///usr/local/tomcat/datadir/geostore-datasource-ovr.properties -Ddatadir.location=/usr/local/tomcat/datadir -DCLIENT_SECRET=Formaromae.1 -DPRINT_BASE_URL=https://georoma.ddns.net/mpic/pdf
     networks:
      - lan-cdr-coll
     command: ["/usr/local/tomcat/bin/wait-for-it.sh", "mpic-geostore:5432", "--", "/usr/local/tomcat/bin/catalina.sh", "run"] 

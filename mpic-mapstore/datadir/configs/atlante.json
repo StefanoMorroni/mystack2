@@ -1,0 +1,1061 @@
+{
+	"version": 2,
+	"map": {
+		"center": {
+			"x": 12.384115455672156,
+			"y": 41.89019102182032,
+			"crs": "EPSG:4326"
+		},
+		"maxExtent": [
+			-20037508.34,
+			-20037508.34,
+			20037508.34,
+			20037508.34
+		],
+		"projection": "EPSG:3857",
+		"units": "m",
+		"zoom": 12,
+		"mapOptions": {
+			"view": {}
+		},
+		"layers": [
+			{
+				"id": "mapnik__0",
+				"group": "background",
+				"source": "osm",
+				"name": "mapnik",
+				"title": "Open Street Map",
+				"type": "osm",
+				"visibility": true,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"useForElevation": false,
+				"hidden": false
+			},
+			{
+				"id": "OpenTopoMap__2",
+				"group": "background",
+				"source": "OpenTopoMap",
+				"name": "OpenTopoMap",
+				"provider": "OpenTopoMap",
+				"title": "OpenTopoMap",
+				"type": "tileprovider",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"useForElevation": false,
+				"hidden": false
+			},
+			{
+				"id": "undefined__72",
+				"group": "background",
+				"source": "ol",
+				"title": "Empty Background",
+				"type": "empty",
+				"visibility": false,
+				"singleTile": false,
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"useForElevation": false,
+				"hidden": false
+			},
+			{
+				"id": "REGLAZ:ctr_2003__56",
+				"format": "image/png",
+				"group": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d",
+				"name": "REGLAZ:ctr_2003",
+				"opacity": 1,
+				"description": "Carta Tecnica Regionale 2003",
+				"title": "Carta Tecnica Regionale 2003",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.195344614389088",
+						"miny": "41.650724056386636",
+						"maxx": "12.888911953366694",
+						"maxy": "42.16022495316693"
+					}
+				},
+				"visibility": false,
+				"singleTile": true,
+				"allowedSRS": {
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"featureInfo": {
+					"format": "HIDDEN"
+				},
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"params": {}
+			},
+			{
+				"id": "REGLAZ:CTR2014__74",
+				"format": "image/png",
+				"group": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d",
+				"name": "REGLAZ:CTR2014",
+				"opacity": 1,
+				"description": "Carta Tecnica Regionale 2014",
+				"title": "Carta Tecnica Regionale 2014",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.07229811325667",
+						"miny": "41.64038974226099",
+						"maxx": "12.882068457337478",
+						"maxy": "42.16212278785394"
+					}
+				},
+				"visibility": false,
+				"singleTile": true,
+				"allowedSRS": {
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"featureInfo": {
+					"format": "HIDDEN"
+				},
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"params": {}
+			},
+			{
+				"id": "REGLAZ:ortofoto_retiled__63",
+				"format": "image/png",
+				"group": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d.fbd72c60-d1fc-11ed-88b0-19f4d74099ac",
+				"name": "REGLAZ:ortofoto_retiled",
+				"opacity": 1,
+				"description": "Layer-Group type layer: REGLAZ:ortofoto_retiled",
+				"title": "Ortofoto",
+				"tiled": false,
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "11.38616449246809",
+						"miny": "40.730749437073484",
+						"maxx": "14.054056509718178",
+						"maxy": "42.89204343433546"
+					}
+				},
+				"visibility": false,
+				"singleTile": true,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"maxResolution": 19.109257071294065,
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "REGLAZ:ortolow_remerged__64",
+				"format": "image/png",
+				"group": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d.fbd72c60-d1fc-11ed-88b0-19f4d74099ac",
+				"name": "REGLAZ:ortolow_remerged",
+				"opacity": 1,
+				"description": "Layer-Group type layer: REGLAZ:ortolow_remerged",
+				"title": "Ortofoto Overview",
+				"tiled": false,
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "9.66939060953841",
+						"miny": "40.67022324601458",
+						"maxx": "16.2505557341782",
+						"maxy": "43.396565940765136"
+					}
+				},
+				"visibility": false,
+				"singleTile": true,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"minResolution": 19.109257071294065,
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaXV__87",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaXV",
+				"opacity": 1,
+				"description": "Municipio XV",
+				"title": "Municipio XV",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.260244",
+						"miny": "41.926186",
+						"maxx": "12.556453",
+						"maxy": "42.140912"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaXIV__86",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaXIV",
+				"opacity": 1,
+				"description": "Municipio XIV",
+				"title": "Municipio XIV",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.242474",
+						"miny": "41.903311",
+						"maxx": "12.45071",
+						"maxy": "42.039415"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaXIII__85",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaXIII",
+				"opacity": 1,
+				"description": "Municipio XIII",
+				"title": "Municipio XIII",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.262858",
+						"miny": "41.881762",
+						"maxx": "12.461381",
+						"maxy": "41.964312"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaXII__84",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaXII",
+				"opacity": 1,
+				"description": "Municipio XII",
+				"title": "Municipio XII",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.236851",
+						"miny": "41.836523",
+						"maxx": "12.475131",
+						"maxy": "41.908653"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaXI__83",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaXI",
+				"opacity": 1,
+				"description": "Municipio XI",
+				"title": "Municipio XI",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.28292",
+						"miny": "41.79555",
+						"maxx": "12.477176",
+						"maxy": "41.872702"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaX__82",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaX",
+				"opacity": 1,
+				"description": "Municipio X",
+				"title": "Municipio X",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.234352",
+						"miny": "41.653321",
+						"maxx": "12.453124",
+						"maxy": "41.805529"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaIX__79",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaIX",
+				"opacity": 1,
+				"description": "Municipio IX",
+				"title": "Municipio IX",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.388636",
+						"miny": "41.681916",
+						"maxx": "12.613171",
+						"maxy": "41.847346"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaVIII__81",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaVIII",
+				"opacity": 1,
+				"description": "Municipio VIII",
+				"title": "Municipio VIII",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.460423",
+						"miny": "41.771057",
+						"maxx": "12.5961",
+						"maxy": "41.876686"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaVII__80",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaVII",
+				"opacity": 1,
+				"description": "Municipio VII",
+				"title": "Municipio VII",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.498615",
+						"miny": "41.788631",
+						"maxx": "12.660978",
+						"maxy": "41.89256"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaVI__78",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaVI",
+				"opacity": 1,
+				"description": "Municipio VI",
+				"title": "Municipio VI",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.5855483333462",
+						"miny": "41.826812",
+						"maxx": "12.855995",
+						"maxy": "41.93789"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaV__77",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaV",
+				"opacity": 1,
+				"description": "Municipio V",
+				"title": "Municipio V",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.514308",
+						"miny": "41.862396",
+						"maxx": "12.615819",
+						"maxy": "41.92055"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaIV__76",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaIV",
+				"opacity": 1,
+				"description": "Municipio IV",
+				"title": "Municipio IV",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.526578",
+						"miny": "41.894113",
+						"maxx": "12.668433",
+						"maxy": "41.971569"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaIII__75",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaIII",
+				"opacity": 1,
+				"description": "Municipio III",
+				"title": "Municipio III",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.48893",
+						"miny": "41.9262",
+						"maxx": "12.618666",
+						"maxy": "42.077801"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaII__74",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaII",
+				"opacity": 1,
+				"description": "Municipio II",
+				"title": "Municipio II",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.459483",
+						"miny": "41.892486",
+						"maxx": "12.533573",
+						"maxy": "41.942913"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomasticaI__73",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomasticaI",
+				"opacity": 1,
+				"description": "Municipio I",
+				"title": "Municipio I",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.43985",
+						"miny": "41.870764",
+						"maxx": "12.5189",
+						"maxy": "41.93509"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			},
+			{
+				"id": "DIPCUL:MunicipiToponomastica__72",
+				"format": "image/png",
+				"group": "03d87d10-63d7-11eb-aeed-754663f9737f",
+				"search": {
+					"url": "/geoserver/wfs",
+					"type": "wfs"
+				},
+				"name": "DIPCUL:MunicipiToponomastica",
+				"opacity": 1,
+				"description": "Confini Generale",
+				"title": "Confini Generale",
+				"type": "wms",
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"bbox": {
+					"crs": "EPSG:4326",
+					"bounds": {
+						"minx": "12.227151943435",
+						"miny": "41.6556417",
+						"maxx": "12.8622499888893",
+						"maxy": "42.1410285"
+					}
+				},
+				"visibility": false,
+				"singleTile": false,
+				"allowedSRS": {
+					"EPSG:3003": true,
+					"EPSG:3785": true,
+					"EPSG:3857": true,
+					"EPSG:4269": true,
+					"EPSG:4326": true,
+					"EPSG:6708": true,
+					"EPSG:102113": true,
+					"EPSG:900913": true
+				},
+				"dimensions": [],
+				"hideLoading": false,
+				"handleClickOnLayer": false,
+				"catalogURL": null,
+				"useForElevation": false,
+				"hidden": false,
+				"version": "1.3.0",
+				"params": {}
+			}
+		],
+		"groups": [
+			{
+				"id": "03d87d10-63d7-11eb-aeed-754663f9737f",
+				"title": "LIMITI AMMINISTRATIVI",
+				"expanded": false
+			},
+			{
+				"id": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d",
+				"title": "SFONDI",
+				"expanded": false
+			},
+			{
+				"id": "03d87d10-63d7-11eb-aeed-754663f9737f.8f090020-5a09-11ec-b567-514239937d1c",
+				"title": "CONFINI DEI MUNICIPI",
+				"expanded": false
+			},
+			{
+				"id": "0120cb90-63e1-11eb-a1b6-1ddd44d6ea8d.fbd72c60-d1fc-11ed-88b0-19f4d74099ac",
+				"title": "ORTOFOTO",
+				"expanded": true
+			}
+		],
+		"backgrounds": [],
+		"bookmark_search_config": {}
+	},
+	"catalogServices": {
+		"services": {
+			"NIC5f6a8d12-5538-47ee-8183-733299494cee": {
+				"url": "https://www.comune.roma.it/TERRITORIO/geoserver/ows",
+				"type": "wms",
+				"title": "NIC",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": "<p>${description}</p>",
+				"oldService": "NIC5f6a8d12-5538-47ee-8183-733299494cee"
+			},
+			"georoma15160b5f-a8da-480a-9ccd-87913f59e1b6": {
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"type": "wms",
+				"title": "Georoma WMS",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": "<p>${description}</p>",
+				"oldService": "georoma15160b5f-a8da-480a-9ccd-87913f59e1b6"
+			},
+			"AdE - Catastocd298224-3167-44ed-ba74-924d9ec5a3d8": {
+				"url": "https://wms.cartografia.agenziaentrate.gov.it/inspire/wms/ows01.php ",
+				"type": "wms",
+				"title": "AdE - Catasto",
+				"autoload": false,
+				"showAdvancedSettings": true,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": "<p>${description}</p>",
+				"oldService": "AdE - Catastocd298224-3167-44ed-ba74-924d9ec5a3d8",
+				"format": {
+					"label": "image/jpeg",
+					"value": "image/jpeg"
+				},
+				"layerOptions": {
+					"tileSize": {
+						"label": "512x512",
+						"value": 512
+					}
+				}
+			},
+			"geocatalogo georoma88cec59b-c315-4436-ba32-ccf674204beb": {
+				"url": "https://geoportale.comune.roma.it/geonetwork/srv/ita/csw",
+				"type": "csw",
+				"title": "Georoma CSW (Geocatalogo)",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": "<p>${description}</p>",
+				"oldService": "geocatalogo georoma88cec59b-c315-4436-ba32-ccf674204beb"
+			},
+			"Georoma GWC76b5ecd4-629a-444c-bb14-4af57742add0": {
+				"url": "https://geoportale.comune.roma.it/geoserver/gwc/service/wmts",
+				"type": "wmts",
+				"title": "Georoma GWC",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": ""
+			},
+			"MPIC22336f39-7475-4ac7-a21c-cf6bdc6d70b5": {
+				"url": "https://geoportale.comune.roma.it/mpic/geoserver/ows",
+				"type": "wms",
+				"title": "MPIC",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": "<p>${description}</p>"
+			},
+			"Georoma WFSb56a1b91-2e4d-4849-bbbd-c25e22edf102": {
+				"url": "https://geoportale.comune.roma.it/geoserver/ows",
+				"type": "wfs",
+				"title": "Georoma WFS",
+				"autoload": false,
+				"showAdvancedSettings": false,
+				"showTemplate": false,
+				"hideThumbnail": false,
+				"metadataTemplate": ""
+			}
+		},
+		"selectedService": "georoma15160b5f-a8da-480a-9ccd-87913f59e1b6"
+	},
+	"widgetsConfig": {
+		"layouts": {
+			"md": [],
+			"xxs": []
+		}
+	},
+	"mapInfoConfiguration": {
+		"infoFormat": "text/html"
+	},
+	"dimensionData": {},
+	"timelineData": {}
+}

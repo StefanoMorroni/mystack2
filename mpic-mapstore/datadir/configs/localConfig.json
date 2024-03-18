@@ -1,0 +1,1669 @@
+{
+	"proxyUrl": {
+		"url": "proxy/?url=",
+		"useCORS": [
+			"http://demo.geo-solutions.it/geoserver",
+			"https://demo.geo-solutions.it:443/geoserver",
+			"https://demo.geo-solutions.it/geoserver",
+			"https://nominatim.openstreetmap.org",
+			"http://cloudsdi.geo-solutions.it",
+			"https://gs-stable.geo-solutions.it/geoserver",
+			"https://gs-stable.geo-solutions.it:443/geoserver",
+			"http://gs-stable.geo-solutions.it/geoserver",
+			"http://gs-stable.geo-solutions.it:443/geoserver",
+			"https://gs-stable.geosolutionsgroup.com/geoserver",
+			"https://gs-stable.geosolutionsgroup.com:443/geoserver",
+			"http://gs-stable.geosolutionsgroup.com/geoserver",
+			"http://gs-stable.geosolutionsgroup.com:443/geoserver",
+			"https://tile.googleapis.com"
+		]
+	},
+	"geoStoreUrl": "rest/geostore/",
+	"mailingList": "https://groups.google.com/forum/#!forum/mapstore-users",
+	"printUrl": "pdf/info.json",
+	"bingApiKey": "AhuXBu7ipR1gNbBfXhtUAyCZ6rkC5PkWpxs2MnMRZ1ZupxQfivjLCch22ozKSCAn",
+	"mapquestApiKey": "__API_KEY_MAPQUEST__",
+	"mapboxAccessToken": "__ACCESS_TOKEN_MAPBOX__",
+	"initialMapFilter": "",
+	"ignoreMobileCss": false,
+	"useAuthenticationRules": true,
+	"loadAfterTheme": true,
+	"defaultMapOptions": {
+		"cesium": {
+			"navigationTools": true,
+			"showSkyAtmosphere": true,
+			"showGroundAtmosphere": false,
+			"enableFog": false,
+			"depthTestAgainstTerrain": false,
+			"terrainProvider": {
+				"type": "ellipsoid"
+			}
+		},
+		"floatingIdentifyDelay": 1000
+	},
+	"mapType": {
+		"defaultVisualizationMode": "2D",
+		"visualizationModes": {
+			"2D": {
+				"desktop": "openlayers",
+				"mobile": "openlayers"
+			},
+			"3D": {
+				"desktop": "cesium",
+				"mobile": "cesium"
+			}
+		}
+	},
+	"localizedLayerStyles": {
+		"name": "mapstore_language"
+	},
+	"authenticationRules": [
+		{
+			"urlPattern": ".*geostore.*",
+			"method": "bearer"
+		},
+		{
+			"urlPattern": ".*rest/config.*",
+			"method": "bearer"
+		},
+		{
+			"urlPattern": ".*geoserver.*",
+			"method": "bearer"
+		},
+		{
+			"urlPattern": ".*api.*",
+			"method": "bearer"
+		},
+		{
+			"urlPattern": ".*pdf.*",
+			"method": "bearer"
+		}
+	],
+	"monitorState": [
+		{
+			"name": "router",
+			"path": "router.location.pathname"
+		},
+		{
+			"name": "browser",
+			"path": "browser"
+		},
+		{
+			"name": "geostorymode",
+			"path": "geostory.mode"
+		},
+		{
+			"name": "featuregridmode",
+			"path": "featuregrid.mode"
+		},
+		{
+			"name": "userrole",
+			"path": "security.user.role"
+		},
+		{
+			"name": "printEnabled",
+			"path": "print.capabilities"
+		}
+	],
+	"userSessions": {
+		"enabled": true
+	},
+	"projectionDefs": [
+		{
+			"code": "EPSG:3003",
+			"def": "+proj=tmerc +lat_0=0 +lon_0=9 +k=0.9996 +x_0=1500000 +y_0=0 +ellps=intl +towgs84=-104.1,-49.1,-9.9,0.971,-2.917,0.714,-11.68 +units=m +no_defs",
+			"extent": [
+				1241482.0019,
+				973563.1609,
+				1830078.9331,
+				5215189.0853
+			],
+			"worldExtent": [
+				6.65,
+				8.8,
+				12.0,
+				47.05
+			]
+		},
+		{
+			"code": "EPSG:6708",
+			"def": "+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
+			"extent": [
+				-331278.39182019,
+				3884128.41246344,
+				802757.85485572,
+				5224005.23112021
+			],
+			"worldExtent": [
+				5.93,
+				34.76,
+				18.99,
+				47.1
+			]
+		}
+	],
+	"initialState": {
+		"defaultState": {
+			"theme": {
+				"selectedTheme": {
+					"id": "romacapitale"
+				}
+			},
+			"mousePosition": {
+				"enabled": true,
+				"crs": "EPSG:6708"
+			},
+			"catalog": {
+				"default": {
+					"newService": {
+						"url": "",
+						"type": "wms",
+						"title": "",
+						"isNew": true,
+						"autoload": false
+					},
+					"selectedService": "gs_stable_csw",
+					"services": {
+						"gs_stable_csw": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/csw",
+							"type": "csw",
+							"title": "GeoSolutions GeoServer CSW",
+							"autoload": true
+						},
+						"gs_stable_wms": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/wms",
+							"type": "wms",
+							"title": "GeoSolutions GeoServer WMS",
+							"autoload": false
+						},
+						"gs_stable_wmts": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/gwc/service/wmts",
+							"type": "wmts",
+							"title": "GeoSolutions GeoServer WMTS",
+							"autoload": false
+						}
+					},
+					"staticServices": {
+						"default_map_backgrounds": {
+							"type": "backgrounds",
+							"title": "Default Backgrounds",
+							"titleMsgId": "defaultMapBackgroundsServiceTitle",
+							"autoload": true,
+							"backgrounds": [
+								{
+									"format": "image/jpeg",
+									"group": "background",
+									"name": "osm:osm_simple_light",
+									"opacity": 1,
+									"title": "OSM Simple Light",
+									"thumbURL": "product/assets/img/osm-simple-light.jpg",
+									"type": "wms",
+									"url": [
+										"https://maps1.geosolutionsgroup.com/geoserver/wms",
+										"https://maps2.geosolutionsgroup.com/geoserver/wms",
+										"https://maps3.geosolutionsgroup.com/geoserver/wms",
+										"https://maps4.geosolutionsgroup.com/geoserver/wms",
+										"https://maps5.geosolutionsgroup.com/geoserver/wms",
+										"https://maps6.geosolutionsgroup.com/geoserver/wms"
+									],
+									"visibility": false,
+									"singleTile": false,
+									"credits": {
+										"title": "OSM Simple Light | Rendering <a href=\"https://www.geo-solutions.it/\">GeoSolutions</a> | Data © <a href=\"http://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>"
+									}
+								},
+								{
+									"format": "image/jpeg",
+									"group": "background",
+									"name": "osm:osm_simple_dark",
+									"opacity": 1,
+									"title": "OSM Simple Dark",
+									"thumbURL": "product/assets/img/osm-simple-dark.jpg",
+									"type": "wms",
+									"url": [
+										"https://maps6.geosolutionsgroup.com/geoserver/wms",
+										"https://maps3.geosolutionsgroup.com/geoserver/wms",
+										"https://maps1.geosolutionsgroup.com/geoserver/wms",
+										"https://maps4.geosolutionsgroup.com/geoserver/wms",
+										"https://maps2.geosolutionsgroup.com/geoserver/wms",
+										"https://maps5.geosolutionsgroup.com/geoserver/wms"
+									],
+									"visibility": false,
+									"singleTile": false,
+									"credits": {
+										"title": "OSM Simple Dark | Rendering <a href=\"https://www.geo-solutions.it/\">GeoSolutions</a> | Data © <a href=\"http://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>"
+									}
+								},
+								{
+									"format": "image/jpeg",
+									"group": "background",
+									"name": "osm:osm",
+									"opacity": 1,
+									"title": "OSM Bright",
+									"thumbURL": "product/assets/img/osm-bright.jpg",
+									"type": "wms",
+									"url": [
+										"https://maps1.geosolutionsgroup.com/geoserver/wms",
+										"https://maps2.geosolutionsgroup.com/geoserver/wms",
+										"https://maps3.geosolutionsgroup.com/geoserver/wms",
+										"https://maps4.geosolutionsgroup.com/geoserver/wms",
+										"https://maps5.geosolutionsgroup.com/geoserver/wms",
+										"https://maps6.geosolutionsgroup.com/geoserver/wms"
+									],
+									"visibility": true,
+									"singleTile": false,
+									"credits": {
+										"title": "OSM Bright | Rendering <a href=\"https://www.geo-solutions.it/\">GeoSolutions</a> | Data © <a href=\"http://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"http://www.openstreetmap.org/copyright\">ODbL</a>"
+									}
+								},
+								{
+									"format": "image/jpeg",
+									"group": "background",
+									"name": "ne:ne-political",
+									"opacity": 1,
+									"title": "NE Political",
+									"thumbURL": "product/assets/img/ne-political.jpg",
+									"type": "wms",
+									"url": [
+										"https://maps1.geosolutionsgroup.com/geoserver/wms",
+										"https://maps2.geosolutionsgroup.com/geoserver/wms",
+										"https://maps3.geosolutionsgroup.com/geoserver/wms",
+										"https://maps4.geosolutionsgroup.com/geoserver/wms",
+										"https://maps5.geosolutionsgroup.com/geoserver/wms",
+										"https://maps6.geosolutionsgroup.com/geoserver/wms"
+									],
+									"visibility": false,
+									"singleTile": false,
+									"credits": {
+										"title": "<p></p>\n"
+									}
+								},
+								{
+									"format": "image/jpeg",
+									"group": "background",
+									"name": "s2cloudless:s2cloudless",
+									"opacity": 1,
+									"title": "Sentinel 2 Cloudless",
+									"type": "wms",
+									"url": [
+										"https://maps1.geosolutionsgroup.com/geoserver/wms",
+										"https://maps2.geosolutionsgroup.com/geoserver/wms",
+										"https://maps3.geosolutionsgroup.com/geoserver/wms",
+										"https://maps4.geosolutionsgroup.com/geoserver/wms",
+										"https://maps5.geosolutionsgroup.com/geoserver/wms",
+										"https://maps6.geosolutionsgroup.com/geoserver/wms"
+									],
+									"source": "s2cloudless",
+									"singleTile": false,
+									"visibility": false
+								},
+								{
+									"type": "osm",
+									"title": "Open Street Map",
+									"name": "mapnik",
+									"source": "osm",
+									"group": "background",
+									"visibility": false
+								},
+								{
+									"source": "ol",
+									"group": "background",
+									"title": "Empty Background",
+									"fixed": true,
+									"type": "empty",
+									"visibility": false
+								}
+							]
+						}
+					}
+				}
+			},
+			"locales": {
+				"supportedLocales": {
+					"it": {
+						"code": "it-IT",
+						"description": "Italiano"
+					},
+					"en": {
+						"code": "en-US",
+						"description": "English"
+					},
+					"fr": {
+						"code": "fr-FR",
+						"description": "Français"
+					},
+					"de": {
+						"code": "de-DE",
+						"description": "Deutsch"
+					},
+					"es": {
+						"code": "es-ES",
+						"description": "Español"
+					}
+				}
+			}
+		}
+	},
+	"plugins": {
+		"mobile": [
+			{
+				"name": "Map",
+				"cfg": {
+					"mapOptions": {
+						"openlayers": {
+							"interactions": {
+								"pinchRotate": false,
+								"altShiftDragRotate": false
+							}
+						}
+					}
+				}
+			},
+			{
+				"name": "About",
+				"cfg": {
+					"githubUrl": "https://github.com/geosolutions-it/MapStore2/tree/"
+				}
+			},
+			"DrawerMenu",
+			{
+				"name": "BackgroundSelector",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}",
+					"bottom": 25,
+					"dimensions": {
+						"side": 65,
+						"sidePreview": 65,
+						"frame": 3,
+						"margin": 5,
+						"label": false,
+						"vertical": true
+					}
+				}
+			},
+			{
+				"name": "Identify",
+				"showIn": [
+					"Settings"
+				],
+				"cfg": {
+					"showFullscreen": true,
+					"position": "bottom",
+					"disableInfoAlert": true,
+					"disableCoordinatesRow": true,
+					"size": 0.5,
+					"fluid": true,
+					"viewerOptions": {
+						"container": "{context.ReactSwipe}"
+					}
+				}
+			},
+			{
+				"name": "Locate",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "Home",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			{
+				"name": "TOC",
+				"cfg": {
+					"activateMetedataTool": false,
+					"activateMapTitle": false,
+					"activateSortLayer": false,
+					"activateLayerFilterTool": false,
+					"activateQueryTool": false
+				}
+			},
+			"AddGroup",
+			{
+				"name": "TOCItemsSettings",
+				"cfg": {
+					"width": 300
+				}
+			},
+			{
+				"name": "Tutorial",
+				"cfg": {
+					"preset": "default_mobile_tutorial"
+				}
+			},
+			{
+				"name": "Settings",
+				"cfg": {
+					"wrap": true
+				}
+			},
+			{
+				"name": "Search",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}",
+					"showOptions": false,
+					"withToggle": [
+						"max-width: 768px",
+						"min-width: 768px"
+					]
+				}
+			},
+			{
+				"name": "Toolbar",
+				"id": "NavigationBar",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}",
+					"id": "navigationBar"
+				}
+			},
+			"ZoomAll",
+			{
+				"name": "MapLoading",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "FullScreen",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": false
+					}
+				}
+			},
+			{
+				"name": "Login",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			"OmniBar",
+			{
+				"name": "BurgerMenu",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			"Expander",
+			"GlobeViewSwitcher",
+			{
+				"name": "Cookie",
+				"cfg": {
+					"externalCookieUrl": "",
+					"declineUrl": "https://www.comune.roma.it",
+					"claim": "<span><h4>Le informazioni messe a disposizione dall'Infrastruttura dei dati Territoriali di Roma Capitale denominata \"GeoRoma\", possono essere utilizzate secondo le indicazioni previste nei limiti di uso previsti nei metadati pubblicati sul portale e possono non costituire attestazione di conformità di dati ufficiali.</h4><h4>Prima dell'uso verificare le informazioni riportate al seguente <a target='_blank' href='https://geoportale-preprod.comune.roma.it/catalogo/'>link</a>, nella sezione relativa al catalogo Metadati RNDT 2.0.</h4><h4>Questo sito web usa i cookie per migliorare la tua esperienza. Assumiamo che sei d'accordo sul loro utilizzo, ma puoi lasciare il sito se sei contrario.</h4></span>"
+				}
+			},
+			"FeedbackMask",
+			{
+				"name": "Widgets"
+			},
+			{
+				"name": "WidgetsTray"
+			},
+			{
+				"name": "Atlante",
+				"cfg": {
+					"disablePluginIf": "{state('router') != '/viewer/atlante'}"
+				}
+			}
+		],
+		"desktop": [
+			"Details",
+			{
+				"name": "Map",
+				"cfg": {
+					"mapOptions": {
+						"openlayers": {
+							"interactions": {
+								"pinchRotate": false,
+								"altShiftDragRotate": false
+							},
+							"attribution": {
+								"container": "#footer-attribution-container"
+							}
+						},
+						"leaflet": {
+							"attribution": {
+								"container": "#footer-attribution-container"
+							}
+						}
+					},
+					"toolsOptions": {
+						"scalebar": {
+							"container": "#footer-scalebar-container"
+						}
+					}
+				}
+			},
+			"AutoMapUpdate",
+			{
+				"name": "HelpLink",
+				"cfg": {
+					"docsUrl": "https://geoportale-preprod.comune.roma.it/allegati/manuali/GeoRoma_Manuale_di_collegamento_V1.0.pdf"
+				}
+			},
+			"DrawerMenu",
+			"Notifications",
+			{
+				"name": "BackgroundSelector",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			"Swipe",
+			{
+				"name": "Annotations"
+			},
+			{
+				"name": "Share",
+				"cfg": {
+					"advancedSettings": {
+						"bbox": true,
+						"centerAndZoom": true
+					}
+				}
+			},
+			"Permalink",
+			{
+				"name": "Identify",
+				"cfg": {
+					"showHighlightFeatureButton": true,
+					"viewerOptions": {
+						"container": "{context.ReactSwipe}"
+					},
+					"showEdit": true
+				},
+				"override": {
+					"Toolbar": {
+						"position": 11
+					}
+				}
+			},
+			{
+				"name": "Locate",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "Home",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			"FeatureEditor",
+			"LayerDownload",
+			{
+				"name": "QueryPanel",
+				"cfg": {
+					"activateQueryTool": true,
+					"spatialOperations": [
+						{
+							"id": "INTERSECTS",
+							"name": "queryform.spatialfilter.operations.intersects"
+						},
+						{
+							"id": "CONTAINS",
+							"name": "queryform.spatialfilter.operations.contains"
+						},
+						{
+							"id": "WITHIN",
+							"name": "queryform.spatialfilter.operations.within"
+						}
+					],
+					"spatialMethodOptions": [
+						{
+							"id": "Viewport",
+							"name": "queryform.spatialfilter.methods.viewport"
+						},
+						{
+							"id": "BBOX",
+							"name": "queryform.spatialfilter.methods.box"
+						},
+						{
+							"id": "Circle",
+							"name": "queryform.spatialfilter.methods.circle"
+						},
+						{
+							"id": "Polygon",
+							"name": "queryform.spatialfilter.methods.poly"
+						}
+					]
+				}
+			},
+			{
+				"name": "TOC",
+				"cfg": {
+					"activateMetedataTool": false,
+					"layerOptions": {
+						"legendOptions": {
+							"WMSLegendOptions": "forceLabels:on",
+							"scaleDependent": true,
+							"legendWidth": 12,
+							"legendHeight": 12
+						}
+					}
+				}
+			},
+			"FilterLayer",
+			"AddGroup",
+			"TOCItemsSettings",
+			"Tutorial",
+			{
+				"name": "MapFooter",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			{
+				"name": "Measure",
+				"cfg": {
+					"defaultOptions": {
+						"showAddAsAnnotation": true
+					}
+				}
+			},
+			{
+				"name": "Print",
+				"cfg": {
+					"useFixedScales": true,
+					"mapPreviewOptions": {
+						"enableScalebox": true,
+						"enableRefresh": false
+					},
+					"overrideOptions": {
+						"geodetic": true
+					}
+				}
+			},
+			"MapImport",
+			{
+				"name": "MapExport"
+			},
+			{
+				"name": "Settings",
+				"cfg": {
+					"wrap": true
+				}
+			},
+			{
+				"name": "MetadataExplorer",
+				"cfg": {
+					"wrap": true
+				}
+			},
+			{
+				"name": "About",
+				"cfg": {
+					"githubUrl": "https://github.com/geosolutions-it/MapStore2/tree/"
+				}
+			},
+			{
+				"name": "MousePosition",
+				"cfg": {
+					"editCRS": true,
+					"showLabels": true,
+					"showToggle": true,
+					"filterAllowedCRS": [
+						"EPSG:4326",
+						"EPSG:3857"
+					],
+					"additionalCRS": {
+						"EPSG:3003": {
+							"label": "EPSG:3003"
+						},
+						"EPSG:6708": {
+							"label": "EPSG:6708"
+						}
+					}
+				}
+			},
+			{
+				"name": "CRSSelector",
+				"cfg": {
+					"additionalCRS": {
+						"EPSG:3003": {
+							"label": "EPSG:3003"
+						},
+						"EPSG:6708": {
+							"label": "EPSG:6708"
+						}
+					},
+					"filterAllowedCRS": [
+						"EPSG:4326",
+						"EPSG:3857"
+					],
+					"allowedRoles": [
+						"ALL"
+					]
+				}
+			},
+			{
+				"name": "Search",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}",
+					"withToggle": [
+						"max-width: 768px",
+						"min-width: 768px"
+					]
+				}
+			},
+			{
+				"name": "Toolbar",
+				"id": "NavigationBar",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}",
+					"id": "navigationBar"
+				}
+			},
+			"ScaleBox",
+			{
+				"name": "ZoomAll",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "MapLoading",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "ZoomIn",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "ZoomOut",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "Cookie",
+				"cfg": {
+					"externalCookieUrl": "",
+					"declineUrl": "https://www.comune.roma.it",
+					"claim": "<span><h4>Le informazioni messe a disposizione dall'Infrastruttura dei dati Territoriali di Roma Capitale denominata \"GeoRoma\", possono essere utilizzate secondo le indicazioni previste nei limiti di uso previsti nei metadati pubblicati sul portale e possono non costituire attestazione di conformità di dati ufficiali.</h4><h4>Prima dell'uso verificare le informazioni riportate al seguente <a target='_blank' href='https://geoportale-preprod.comune.roma.it/catalogo/'>link</a>, nella sezione relativa al catalogo Metadati RNDT 2.0.</h4><h4>Questo sito web usa i cookie per migliorare la tua esperienza. Assumiamo che sei d'accordo sul loro utilizzo, ma puoi lasciare il sito se sei contrario.</h4></span>"
+				}
+			},
+			"OmniBar",
+			{
+				"name": "Login",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			"Save",
+			"SaveAs",
+			"Expander",
+			"Undo",
+			"Redo",
+			"FullScreen",
+			"GlobeViewSwitcher",
+			"SearchServicesConfig",
+			"SearchByBookmark",
+			"WidgetsBuilder",
+			{
+				"name": "Widgets"
+			},
+			"WidgetsTray",
+			{
+				"name": "Timeline",
+				"cfg": {
+					"expandLimit": 20
+				}
+			},
+			"Playback",
+			"FeedbackMask",
+			"StyleEditor",
+			"DeleteMap",
+			{
+				"name": "SidebarMenu",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante'}"
+				}
+			},
+			{
+				"name": "MapViews"
+			},
+			{
+				"name": "Mpic",
+				"cfg": {
+					"disablePluginIf": "{state('router') == '/viewer/atlante' || state('user') === undefined || (state('user')?.groups?.group?.filter(item => item?.groupName?.toUpperCase().startsWith('MPIC')||item?.groupName?.toUpperCase().startsWith('DIPENDENTE')).length < 1 )}"
+				}
+			},
+			{
+				"name": "Atlante",
+				"cfg": {
+					"disablePluginIf": "{state('router') != '/viewer/atlante'}"
+				}
+			}
+		],
+		"embedded": [
+			"Details",
+			{
+				"name": "Map",
+				"cfg": {
+					"mapOptions": {
+						"openlayers": {
+							"interactions": {
+								"pinchRotate": false,
+								"altShiftDragRotate": false
+							},
+							"attribution": {
+								"container": "#footer-attribution-container"
+							}
+						},
+						"leaflet": {
+							"attribution": {
+								"container": "#footer-attribution-container"
+							},
+							"scrollWheelZoom": false,
+							"zoomControl": true
+						},
+						"cesium": {
+							"attribution": {
+								"container": "#footer-attribution-container"
+							}
+						}
+					},
+					"toolsOptions": {
+						"scalebar": {
+							"container": "#footer-scalebar-container"
+						}
+					}
+				}
+			},
+			{
+				"name": "DrawerMenu",
+				"hide": "{!(request.query && request.query.forceDrawer)}"
+			},
+			{
+				"name": "BackgroundSelector",
+				"cfg": {
+					"bottom": 40,
+					"dimensions": {
+						"side": 65,
+						"sidePreview": 65,
+						"frame": 3,
+						"margin": 5,
+						"label": false,
+						"vertical": true
+					}
+				}
+			},
+			{
+				"name": "Identify",
+				"cfg": {
+					"showInMapPopup": true,
+					"viewerOptions": {
+						"container": "{context.ReactSwipe}"
+					}
+				}
+			},
+			{
+				"name": "ZoomAll",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "Locate",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			{
+				"name": "FullScreen"
+			},
+			{
+				"name": "TOC",
+				"cfg": {
+					"activateMapTitle": false,
+					"activateSettingsTool": false,
+					"activateMetedataTool": false,
+					"activateRemoveLayer": false
+				}
+			},
+			"AddGroup",
+			"MapFooter",
+			{
+				"name": "Settings",
+				"cfg": {
+					"wrap": true
+				}
+			},
+			{
+				"name": "Search",
+				"cfg": {
+					"showOptions": false,
+					"withToggle": true
+				}
+			},
+			{
+				"name": "Toolbar",
+				"id": "NavigationBar",
+				"cfg": {
+					"id": "navigationBar"
+				}
+			},
+			{
+				"name": "MapLoading",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			"Cookie",
+			"OmniBar",
+			{
+				"name": "GoFull",
+				"override": {
+					"Toolbar": {
+						"alwaysVisible": true
+					}
+				}
+			},
+			"FeedbackMask"
+		],
+		"common": [
+			{
+				"name": "OmniBar",
+				"cfg": {
+					"className": "navbar shadow navbar-home"
+				}
+			},
+			{
+				"name": "ManagerMenu",
+				"cfg": {
+					"enableContextManager": false
+				}
+			},
+			"Login",
+			"Language",
+			"Attribution",
+			"ScrollTop",
+			"Notifications"
+		],
+		"maps": [
+			"HomeDescription",
+			"CreateNewMap",
+			"FeaturedMaps",
+			"ContentTabs",
+			{
+				"name": "Maps",
+				"cfg": {
+					"mapsOptions": {
+						"start": 0,
+						"limit": 12
+					},
+					"fluid": true
+				}
+			},
+			{
+				"name": "Dashboards",
+				"cfg": {
+					"mapsOptions": {
+						"start": 0,
+						"limit": 12
+					},
+					"fluid": true
+				}
+			},
+			{
+				"name": "GeoStories",
+				"cfg": {
+					"mapsOptions": {
+						"start": 0,
+						"limit": 12
+					},
+					"fluid": true
+				}
+			},
+			{
+				"name": "Contexts",
+				"cfg": {
+					"mapsOptions": {
+						"start": 0,
+						"limit": 12
+					},
+					"fluid": true
+				}
+			},
+			{
+				"name": "Cookie",
+				"cfg": {
+					"externalCookieUrl": "",
+					"declineUrl": "https://www.comune.roma.it",
+					"claim": "<span><h4>Le informazioni messe a disposizione dall'Infrastruttura dei dati Territoriali di Roma Capitale denominata \"GeoRoma\", possono essere utilizzate secondo le indicazioni previste nei limiti di uso previsti nei metadati pubblicati sul portale e possono non costituire attestazione di conformità di dati ufficiali.</h4><h4>Prima dell'uso verificare le informazioni riportate al seguente <a target='_blank' href='https://geoportale-preprod.comune.roma.it/catalogo/'>link</a>, nella sezione relativa al catalogo Metadati RNDT 2.0.</h4><h4>Questo sito web usa i cookie per migliorare la tua esperienza. Assumiamo che sei d'accordo sul loro utilizzo, ma puoi lasciare il sito se sei contrario.</h4></span>"
+				}
+			}
+		],
+		"permalink": [
+			"Permalink",
+			"FeedbackMask"
+		],
+		"dashboard": [
+			"Details",
+			"AddWidgetDashboard",
+			"MapConnectionDashboard",
+			{
+				"name": "SidebarMenu",
+				"cfg": {
+					"containerPosition": "columns"
+				}
+			},
+			{
+				"name": "Dashboard"
+			},
+			"Notifications",
+			{
+				"name": "About",
+				"cfg": {
+					"githubUrl": "https://github.com/geosolutions-it/MapStore2/tree/"
+				}
+			},
+			"Language",
+			"DashboardSave",
+			"DashboardSaveAs",
+			"Attribution",
+			{
+				"name": "TheLogo",
+				"cfg": {
+					"className": "thelogo-banner-dashboard"
+				}
+			},
+			{
+				"name": "Home",
+				"override": {
+					"OmniBar": {
+						"priority": 5
+					}
+				}
+			},
+			{
+				"name": "Login",
+				"override": {
+					"OmniBar": {
+						"priority": 5
+					}
+				}
+			},
+			{
+				"name": "DeleteDashboard"
+			},
+			{
+				"name": "DashboardExport"
+			},
+			{
+				"name": "DashboardImport"
+			},
+			{
+				"name": "OmniBar",
+				"cfg": {
+					"containerPosition": "header",
+					"className": "navbar shadow navbar-home"
+				}
+			},
+			{
+				"name": "Share",
+				"cfg": {
+					"showAPI": false,
+					"advancedSettings": false,
+					"shareUrlRegex": "(h[^#]*)#\\/dashboard\\/([A-Za-z0-9]*)",
+					"shareUrlReplaceString": "$1dashboard-embedded.html#/$2",
+					"embedOptions": {
+						"showTOCToggle": false,
+						"showConnectionsParamToggle": true,
+						"allowFullScreen": false,
+						"sizeOptions": {
+							"Small": {
+								"width": 600,
+								"height": 500
+							},
+							"Medium": {
+								"width": 800,
+								"height": 600
+							},
+							"Large": {
+								"width": 1000,
+								"height": 800
+							},
+							"Custom": {
+								"width": 0,
+								"height": 0
+							}
+						},
+						"selectedOption": "Small"
+					}
+				}
+			},
+			"Permalink",
+			{
+				"name": "DashboardEditor",
+				"cfg": {
+					"selectedService": "GeoSolutions GeoServer CSW",
+					"services": {
+						"GeoSolutions GeoServer CSW": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/csw",
+							"type": "csw",
+							"title": "GeoSolutions GeoServer CSW"
+						},
+						"GeoSolutions GeoServer WMS": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/wms",
+							"type": "wms",
+							"title": "GeoSolutions GeoServer WMS"
+						},
+						"GeoSolutions GeoServer WMTS": {
+							"url": "https://gs-stable.geo-solutions.it/geoserver/gwc/service/wmts",
+							"type": "wmts",
+							"title": "GeoSolutions GeoServer WMTS"
+						}
+					},
+					"containerPosition": "columns"
+				}
+			},
+			{
+				"name": "QueryPanel",
+				"cfg": {
+					"toolsOptions": {
+						"hideCrossLayer": true,
+						"useEmbeddedMap": true
+					},
+					"spatialPanelExpanded": false,
+					"spatialOperations": [
+						{
+							"id": "INTERSECTS",
+							"name": "queryform.spatialfilter.operations.intersects"
+						},
+						{
+							"id": "CONTAINS",
+							"name": "queryform.spatialfilter.operations.contains"
+						},
+						{
+							"id": "WITHIN",
+							"name": "queryform.spatialfilter.operations.within"
+						}
+					],
+					"spatialMethodOptions": [
+						{
+							"id": "BBOX",
+							"name": "queryform.spatialfilter.methods.box"
+						},
+						{
+							"id": "Circle",
+							"name": "queryform.spatialfilter.methods.circle"
+						},
+						{
+							"id": "Polygon",
+							"name": "queryform.spatialfilter.methods.poly"
+						}
+					],
+					"containerPosition": "columns"
+				}
+			},
+			{
+				"name": "Tutorial",
+				"cfg": {
+					"allowClicksThruHole": false,
+					"containerPosition": "header",
+					"preset": "dashboard_tutorial"
+				}
+			},
+			{
+				"name": "FeedbackMask",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			}
+		],
+		"geostory-embedded": [
+			"GeoStory",
+			{
+				"name": "GeoStoryNavigation",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			},
+			{
+				"name": "FeedbackMask",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			}
+		],
+		"dashboard-embedded": [
+			{
+				"name": "Dashboard",
+				"cfg": {
+					"minLayoutWidth": 768
+				}
+			},
+			{
+				"name": "FeedbackMask"
+			}
+		],
+		"geostory": [
+			{
+				"name": "OmniBar",
+				"cfg": {
+					"containerPosition": "header",
+					"className": "navbar shadow navbar-home"
+				}
+			},
+			{
+				"name": "Tutorial",
+				"cfg": {
+					"allowClicksThruHole": false,
+					"containerPosition": "header",
+					"preset": "geostory_view_tutorial"
+				}
+			},
+			"Login",
+			"BurgerMenu",
+			{
+				"name": "About",
+				"cfg": {
+					"githubUrl": "https://github.com/geosolutions-it/MapStore2/tree/"
+				}
+			},
+			"Language",
+			"Attribution",
+			"Home",
+			{
+				"name": "TheLogo",
+				"cfg": {
+					"className": "thelogo-banner-geostory"
+				}
+			},
+			{
+				"name": "GeoStory"
+			},
+			{
+				"name": "DeleteGeoStory"
+			},
+			{
+				"name": "GeoStoryExport"
+			},
+			{
+				"name": "GeoStoryImport"
+			},
+			"GeoStorySave",
+			"GeoStorySaveAs",
+			"MapEditor",
+			"MediaEditor",
+			{
+				"name": "GeoStoryEditor",
+				"cfg": {
+					"disablePluginIf": "{!!(state('browser') && state('browser').mobile)}",
+					"containerPosition": "columns"
+				}
+			},
+			{
+				"name": "GeoStoryNavigation",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			},
+			"Notifications",
+			{
+				"name": "FeedbackMask",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			},
+			{
+				"name": "Share",
+				"cfg": {
+					"embedPanel": true,
+					"showAPI": false,
+					"embedOptions": {
+						"showTOCToggle": false,
+						"allowFullScreen": false
+					},
+					"shareUrlRegex": "(h[^#]*)#\\/geostory\\/([^\\/]*)\\/([A-Za-z0-9]*)",
+					"shareUrlReplaceString": "$1geostory-embedded.html#/$3",
+					"advancedSettings": {
+						"hideInTab": "embed",
+						"homeButton": true,
+						"sectionId": true
+					}
+				}
+			},
+			"Permalink"
+		],
+		"context-creator": [
+			{
+				"name": "OmniBar",
+				"cfg": {
+					"containerPosition": "header",
+					"className": "navbar shadow navbar-home"
+				}
+			},
+			"Redirect",
+			"Login",
+			"Language",
+			"Attribution",
+			"Tutorial",
+			{
+				"name": "ContextCreator",
+				"cfg": {
+					"documentationBaseURL": "https://mapstore.geosolutionsgroup.com/mapstore/docs/api/plugins",
+					"backToPageDestRoute": "/context-manager",
+					"backToPageConfirmationMessage": "contextCreator.undo"
+				}
+			},
+			"ContextImport",
+			"ContextExport",
+			"Notifications",
+			{
+				"name": "FeedbackMask",
+				"cfg": {
+					"containerPosition": "header"
+				}
+			}
+		],
+		"manager": [
+			"HomeDescription",
+			"Redirect",
+			"Manager",
+			"Home",
+			"UserManager",
+			"GroupManager"
+		],
+		"mpicutility": [
+			"Home",
+			"MpicUtility"
+		],
+		"context-manager": [
+			"Header",
+			"Redirect",
+			"Home",
+			"ContextManager"
+		]
+	},
+	"keycloak": {
+		"vendor": "keycloak",
+		"authorize": "https://georoma.ddns.net/auth/realms/georomarealm/protocol/openid-connect/auth",
+		"logout": "/auth/realms/georomarealm/protocol/openid-connect/logout",
+		"token": "/auth/realms/georomarealm/protocol/openid-connect/token",
+		"userinfo": "/auth/realms/georomarealm/protocol/openid-connect/userinfo",
+		"clientId": "georomaclient",
+		"client_secret": "1c4767bd-9ccf-451d-9240-686c28afd5e2",
+		"introspection_endpoint": "/auth/realms/georomarealm/protocol/openid-connect/token/introspect",
+		"backend_userinfo": "https://georoma.ddns.net/auth/realms/georomarealm/protocol/openid-connect/userinfo",
+		"expires": "480000"
+	},
+	"wso2": {
+		"vendor": "wso2",
+		"authorize": "https://identity-test.ws-comune.roma.it/oauth2/authorize",
+		"logout": "https://identity-test.ws-comune.roma.it/oidc/logout",
+		"revoke": "https://identity-test.ws-comune.roma.it/oauth2/revoke",
+		"token": "https://identity-test.ws-comune.roma.it/oauth2/token",
+		"userinfo": "https://identity-test.ws-comune.roma.it/oauth2/userinfo",
+		"clientId": "nkY7wG441gJXBeyn1yvcc0cmZqsa",
+		"client_secret": "OWRMgzPlBgpu6NEUUK4OzGG8gW0a",
+		"introspection_endpoint": "https://identity-test.ws-comune.roma.it/oauth2/introspect",
+		"backend_userinfo": "https://identity-test.ws-comune.roma.it/oauth2/userinfo",
+		"expires": "480000"
+	},
+	"sso": {
+		"vendor": "openAM",
+		"authorize": "https://ssopre.comune.roma.it/ssoservice/oauth2/realms/root/realms/public/authorize",
+		"logout": "https://ssopre.comune.roma.it/ssoservice/oauth2/realms/root/realms/public/connect/endSession",
+		"token": "https://ssopre.comune.roma.it/ssoservice/oauth2/realms/root/realms/public/access_token",
+		"userinfo": "https://ssopre.comune.roma.it/ssoservice/oauth2/realms/root/realms/public/userinfo",
+		"clientId": "formaromae",
+		"scope": "openid tipo_utente",
+		"redirect_uri": "https://georoma.ddns.net/mpic/",
+		"backend_userinfo": "https://ssopre.comune.roma.it/ssoservice/oauth2/realms/root/realms/public/userinfo",
+		"expires": "480000",
+		"tipoutente": "iv_tipoutente"
+	},
+	"georoma": {
+		"fogliurl": "https://geoportale-preprod.comune.roma.it/api/v2/ricerche/catasto/fogli/",
+		"indirizziurl": "https://geoportale-preprod.comune.roma.it/api/v2/ricerche/toponomastica/indirizzi",
+		"loaderMeWorkspaces": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/me/workspaces",
+		"loaderAdminWorkspaces": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/admin/workspaces",
+		"loaderWorkspaceAdministrators": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/admin/workspaces/workspace_id/administrators",
+		"loaderMeDepartments": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/me/departments",
+		"loaderMeWorkflows": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/me/workflows",
+		"loaderWorkflows": "https://geoportale-preprod.comune.roma.it/geofeeder/api/v1/loader/workflows"
+	},
+	"mpic": {
+		"beniricercaurl": "https://geoportale-preprod.comune.roma.it/api/mpic/v2/ricerche/sipic/ibus",
+		"benilayername": "mpic:t_mibu",
+		"benitargetNamespace": "https://geoportale-preprod.comune.roma.it/mpic",
+		"benitargetPrefix": "mpic",
+		"attiricercaurl": "https://geoportale-preprod.comune.roma.it/api/mpic/v2/ricerche/sipic/atti",
+		"attilayername": "mpic:atto_mapstore",
+		"attitargetNamespace": "https://geoportale-preprod.comune.roma.it/mpic",
+		"attitargetPrefix": "mpic",
+		"censuariurl": "https://geoportale-preprod.comune.roma.it/api/mpic/v2/ricerche/mpic/censuari",
+		"toponomasticaurl": "https://geoportale-preprod.comune.roma.it/api/v2/ricerche/toponomastica/indirizzi",
+		"particellelayername": "mpic:Particelle_co",
+		"reftreeurl": "https://geoportale-preprod.comune.roma.it/api/mpic/v2/aggiornamenti/reftree/cassoni"
+	},
+	"atlante": {
+		"serviziodiricerca": "https://geoportale-preprod.comune.roma.it/geoapi/collections/beni_confiscati/items",
+		"projection": "EPSG:4326",
+		"maxZoom": 16,
+		"defaultparams": "?f=json&offset=0&limit=60",
+		"properties": [
+			"indirizzo"
+		],
+		"schedabene": {
+			"attributi": [
+				{
+					"label": "Indirizzo",
+					"prop": "indirizzo"
+				},
+				{
+					"label": "Municipio",
+					"prop": "municipio"
+				},
+				{
+					"label": "Categoria",
+					"prop": "categoria"
+				},
+				{
+					"label": "Superficie (mq)",
+					"prop": "superficie"
+				},
+				{
+					"label": "Finalità",
+					"prop": "destinazione_uso"
+				},
+				{
+					"label": "Matricola IBU",
+					"prop": "matricola"
+				},
+				{
+					"label": "Catasto",
+					"prop": "catasto"
+				},
+				{
+					"label": "Responsabile della gestione",
+					"prop": "responsabile_gestione"
+				},
+				{
+					"label": "Assegnatario",
+					"prop": "utilizzatore"
+				},
+				{
+					"label": "Utilizzo",
+					"prop": "utilizzo"
+				}
+			]
+		},
+		"municipi": [
+			{
+				"codice": "1",
+				"descrizione": "Municipio I"
+			},
+			{
+				"codice": "2",
+				"descrizione": "Municipio II"
+			},
+			{
+				"codice": "3",
+				"descrizione": "Municipio III"
+			},
+			{
+				"codice": "4",
+				"descrizione": "Municipio IV"
+			},
+			{
+				"codice": "5",
+				"descrizione": "Municipio V"
+			},
+			{
+				"codice": "6",
+				"descrizione": "Municipio VI"
+			},
+			{
+				"codice": "7",
+				"descrizione": "Municipio VII"
+			},
+			{
+				"codice": "8",
+				"descrizione": "Municipio VIII"
+			},
+			{
+				"codice": "9",
+				"descrizione": "Municipio IX"
+			},
+			{
+				"codice": "10",
+				"descrizione": "Municipio X"
+			},
+			{
+				"codice": "11",
+				"descrizione": "Municipio XI"
+			},
+			{
+				"codice": "12",
+				"descrizione": "Municipio XII"
+			},
+			{
+				"codice": "13",
+				"descrizione": "Municipio XIII"
+			},
+			{
+				"codice": "14",
+				"descrizione": "Municipio XIV"
+			},
+			{
+				"codice": "15",
+				"descrizione": "Municipio XV"
+			}
+		],
+		"stato": [
+			{
+				"codice": "Assegnato",
+				"descrizione": "Assegnato"
+			},
+			{
+				"codice": "In Assegnazione",
+				"descrizione": "In Assegnazione"
+			}
+		],
+		"categoriainventariale": [
+			{
+				"codice": "Cat. A - Beni Demaniali",
+				"descrizione": "Beni Demaniali"
+			},
+			{
+				"codice": "Cat. B - Patrimonio indisponibile",
+				"descrizione": "Patrimonio indisponibile"
+			},
+			{
+				"codice": "Cat. C - Patrimonio disponibile",
+				"descrizione": "Patrimonio disponibile"
+			}
+		],
+		"destinazioneduso": [
+			{
+				"codice": "Emergenza abitativa",
+				"descrizione": "Emergenza abitativa"
+			},
+			{
+				"codice": "Finalità culturale/artistica",
+				"descrizione": "Finalità culturale/artistica"
+			},
+			{
+				"codice": "Finalità istituzionale",
+				"descrizione": "Finalità istituzionale"
+			},
+			{
+				"codice": "Finalità istituzionali/sociale",
+				"descrizione": "Finalità istituzionali/sociale"
+			},
+			{
+				"codice": "Finalità sociale",
+				"descrizione": "Finalità sociale"
+			}
+		],
+		"categoria": [
+			{
+				"codice": "URBANO",
+				"descrizione": "Fabbricato"
+			},
+			{
+				"codice": "TERRENI",
+				"descrizione": "Terreni"
+			}
+		],
+		"superficie": [
+			{
+				"codice": "superficie BETWEEN 0 AND 99",
+				"descrizione": "meno di 100 mq"
+			},
+			{
+				"codice": "superficie BETWEEN 100 AND 300",
+				"descrizione": "tra 100 e 300 mq"
+			},
+			{
+				"codice": "superficie BETWEEN 301 AND 999999",
+				"descrizione": "più di 300 mq"
+			}
+		],
+		"legenda": [
+			"<b>Beni Confiscati alle Mafie e alla criminalita&#768; organizzata</b><br/>Beni sottratti alla criminalita&#768; trasferiti al patrimonio di Roma Capitale che possono essere utilizzati per scopi istituzionali, sociali o economici con vincolo di reimpiego dei proventi per finalita&#768; sociali; sia direttamente dall&#39;ente che indirettamente, dandoli in concessione a soggetti terzi, indicati dal codice antimafia, mediante apposite procedure. Il Dipartimento Valorizzazione del Patrimonio e Politiche Abitative coordina il procedimento di assegnazione e consegna degli immobili confiscati alle Strutture capitoline che ne hanno fatto richiesta tramite una manifestazione di interesse corredata dal progetto che si intende realizzare, ovvero ne gestisce l&#39;assegnazione a soggetti terzi.",
+			"<b>Stato</b><br/>Filtra i beni a seconda che siano: Liberi ovvero non occupati,  Assegnati, In Assegnazione, o sottoposti a Istruttoria.",
+			"<b>Categoria</b><br/>Filtra per fabbricati e terreni.",
+			"<b>Responsabile della gestione</b><br/>Indica la Struttura capitolina (Dipartimento, Sovrintendenza, Municipio) responsabile della gestione.",
+			"<b>Matricola IBU</b><br/>Acronimo di Insieme di Beni Unitari e&#768; la matricola inventariale assegnata ad ogni bene o insieme di beni dalla Conservatoria di Roma Capitale.",
+			"<b>Catasto</b><br/>Sono gli identificativi catastali, così come risultano dalle banche dati catastali dell’Agenzia delle Entrate."
+		],
+		"struttureprotette": {
+			"title": "STRUTTURA PROTETTA",
+			"warning": "Dati omessi per questione di privacy"
+		}
+	}
+}
